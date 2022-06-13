@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MovieApp.Models.Movie>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+ @if (Model.Count() > 0)
+    {
+           
+        <div class="container-fluid padding">
+            <div class="row">
+                <div class="row padding">
+
+                    @foreach(var movie in Model)
+
+                    {
+                    <div class="card-body">
+                        <div class="col">
+                            <div class="col-6 col-md-3 col-lg-2">
+
+                                <h4>
+                                    @movie.Name
+                                </h4>
+
+                                <p>@movie.Description</p>
+                                <br />
+                                <a asp-controller="Movie" asp-action="Details/@movie.Id">
+                                    <input type="button" class="btn btn-primary" value="Details" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                           }
+                        </div>
+
+                    </div>
+                </div>
+       
+
+    }
+
+    else
+    {
+        <h2>Listelenecek herhangi bir film bulunamadı.</h2>
+    }
