@@ -1,24 +1,14 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using MovieApp.Models;
 
 namespace MovieApp.Controllers
 {
 	public class AdminController : Controller
 	{
-		public IActionResult Create()
-		{
-			return View();
-		}
 
-		public IActionResult Delete()
-		{
-			return View();
-		}
 
-		public IActionResult Update()
-		{
-			return View();
-		}
+		
 
 		
 	}

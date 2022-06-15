@@ -1,21 +1,18 @@
-﻿@using MovieApp.Models ;
-@model IEnumerable<Movie>
+﻿
+@model Movie
 @{
     ViewData["Title"] = "Home Page";
 }
 
 
-@foreach (var movie in Model)
-{
-    <div class="card mb-3">
+    <div class="card mb-3 text-center">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">@movie.Name</h5>
-            <p class="card-text">@movie.Description</p>
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">@Model.Description</p>
             <p class="card-text"><small class="text-muted"> Now added by Ömer Aran</small></p>
         </div>
     </div>
 
-}
 
 

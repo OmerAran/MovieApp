@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +28,25 @@ namespace MovieApp
                 => { options.UseSqlServer(Configuration.GetConnectionString("MovieAppContext"));
                     options.EnableSensitiveDataLogging(true);
                 });
+
+
+            services.AddAuthentication(
+                CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+                {
+                    x.LoginPath = "/Login/Index"; //eğer izinsiz ise otomatik buraya atıcak.
+                });
+
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+
+                config.Filters.Add(new AuthorizeFilter(policy));
+
+            });
+
+            
             
         }
 
@@ -39,6 +56,7 @@ namespace MovieApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
             else
             {
@@ -50,7 +68,7 @@ namespace MovieApp
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

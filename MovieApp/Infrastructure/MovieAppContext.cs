@@ -15,7 +15,8 @@ namespace MovieApp.Infrastructure
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
-	}
+    }
 }
 
