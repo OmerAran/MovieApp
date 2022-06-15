@@ -37,12 +37,7 @@ namespace MovieApp.Controllers
             return View(movie);
 		}
 
-		[AllowAnonymous]
-		public IActionResult Add(int id)
-		{
-
-			return View(_context.Movies.Find(id));
-		}
+		
 
 
 		public IActionResult Delete(int id)

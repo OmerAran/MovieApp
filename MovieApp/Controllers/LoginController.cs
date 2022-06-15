@@ -64,7 +64,7 @@ namespace MovieApp.Controllers
 		public async Task<IActionResult> LogOut()
         {
 			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-			return RedirectToAction("Index", "Login");
+			return RedirectToAction("Index", "Home");
         }
 	}
 }

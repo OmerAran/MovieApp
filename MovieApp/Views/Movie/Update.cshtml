@@ -1,0 +1,21 @@
+﻿@model Movie
+
+
+<form asp-action="Update" asp-controller="Movie" method="post">
+
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" placeholder="Enter Movie Name ">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" placeholder="Description">
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save Movie" class="btn btn-secondary" />
+    </div>
+
+</form>
